@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Formular</title>
+  <script src="/js/jquery-3.6.0.min.js"></script>
+  <script>
+    function button2handler() {
+      document.getElementById("wertinput").value="33";
+    }
+    function button3handler() {
+      // Und nun frage mal eine Zahl mit jQuery ab
+      try {
+        $.ajax({
+          "url": "/ajax/query1"
+        }).then(function (data) {
+          try {
+            document.getElementById("wertinput").value = data;
+            document.getElementById("button1").click();
+            //alert("value:" + data);
+          } catch (error) {
+            alert("Fehler innen!");
+          }
+        });
+      } catch (error) {}
+    }
+  </script>
+
 </head>
 <body>
-$END$
+  <h1 th:text="#{form_title}"/>
+  <form th:action="@{${formendpoint}}" method="POST" id="form1">
+    <button id="button1" name="cmd" value="button1" th:text="#{button1_name}" th:alt-title="#{button1_tip}"/>
+      <button name="cmd" value="button4" th:text="'HALLO'"/>
+    <br>
+    WERT: <span th:text="${wert}"/><br>
+    <label th:text="#{wert_label}" />  <input id="wertinput" type="text" th:value="${wert}" th:name="wert" size="10" /><br>
+    <button th:attr="onclick=|button2handler()|" th:text="'BUTTON2'" style="background-color: green; color: white;" /><br>
+  </form>
+<button th:attr="onclick=|button3handler()|" th:text="'BUTTON3'" style="background-color: blue; color: white;" /><br>
+
 </body>
 </html>

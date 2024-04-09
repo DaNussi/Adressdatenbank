@@ -1,4 +1,4 @@
-package at.ac.htlstp.et.demodatabasespringboot.controller;
+package at.ac.htlstp.et.adresstadenbank.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +11,7 @@ public class QueryController {
     @GetMapping("/ajax/query1")
     public ResponseEntity<String> toUppercaseGet() {
         return ResponseEntity.ok("68");
+
     }
 
 }

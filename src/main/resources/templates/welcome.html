@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+
+    <meta name="author"      content="Herbert Klenk">
+
+    <title>Laender in Europa</title>
+
+    <!--
+    <link rel="stylesheet" th:href="@{../static/welcome.css}"/>
+ -->
+
+ <style>
+     header {
+        color: royalblue;
+         background-color: white;
+        text-align: center;
+        }
+
+     body {
+         background-color: -moz-default-background-color;
+     }
+
+     table {
+        border: 1px solid grey;
+        }
+
+    th,td {
+        border: 1px solid grey;
+        text-align: center;
+    }
+    
+    th {
+        background-color: lightgray;
+        color: royalblue;
+    }
+ </style>
 </head>
+<header>
+    <h1>Länder in Europa</h1>
+</header>
 <body>
-$END$
+    <form action="#" th:action="@{/form}" th:object="${land}" method="post">
+
+        <label for="idInput">ID</label>
+        <input id="idInput" th:field="*{id}">
+
+        <label for="nameInput">Name</label>
+        <input id="nameInput" th:field="*{Name}">
+
+        <label for="hauptstadtInput">Hauptstadt</label>
+        <input id="hauptstadtInput" th:field="*{Hauptstadt}">
+
+        <label for="einwohnerInput">Einwohner</label>
+        <input id="einwohnerInput" th:field="*{Einwohner}">
+
+        <button style="color: green;" type="submit">Bestätigung</button>
+    </form>
+    <p></p>
+  <table>
+      <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Hauptstadt</th>
+          <th>Einwohner</th>
+          <th>Löschen</th>
+      </tr>
+      <tbody>
+          <tr th:each="t:${tables}">
+              <td th:text="${t.id}"/>
+              <td th:text="${t.Name}"/>
+              <td th:text="${t.Hauptstadt}"/>
+              <td th:text="${t.Einwohner}"/>
+              <td>
+                  <a th:href="${'/delete?id='+t.id}">
+                      <button style= "color: red;">Löschen</button>
+                  </a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
 </body>
 </html>
+

@@ -6,19 +6,13 @@ body {
 
 h1 {
     text-align: center;
-    color: blue;
+    color: green;
 }
 
 header {
     text-align: center;
 }
 
-.Still_Horizontale{
-    border: solid thick limegreen;border-style: inset;
-    padding: 7px 7px 7px 7px;
-    background-color: white;
-
-}
 
 div {
     text-align: center;
