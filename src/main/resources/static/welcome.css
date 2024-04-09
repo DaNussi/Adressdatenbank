@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+body {
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+header {
+    text-align: center;
+}
+
+.Still_Horizontale{
+    border: solid thick limegreen;border-style: inset;
+    padding: 7px 7px 7px 7px;
+    background-color: white;
+
+}
+
+div {
+    text-align: center;
+}
